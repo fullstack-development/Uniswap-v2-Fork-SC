@@ -16,7 +16,11 @@ forge script script/Deploy.s.sol:Deploy --rpc-url zkEVMPolygonTestnet --broadcas
 
 forge create src/v2-core/UniswapV2Factory.sol:UniswapV2Factory --rpc-url zkEVMPolygonTestnet --private-key 'ae839931542e367be1723ff40d18a6111c23bfe9c9320e1bb54a3a9217b6afd1' --constructor-args "0xc0cb694bE0f90a9167e1ff8f2C3FcABdF745EFf9" --verify --etherscan-api-key ${POLYSCAN_API_KEY}
 
-forge create src/v2-periphery/UniswapV2Router02.sol:UniswapV2Router02 --rpc-url zkEVMPolygonTestnet --private-key 'ae839931542e367be1723ff40d18a6111c23bfe9c9320e1bb54a3a9217b6afd1' --constructor-args "0x76a6bb34701516Ec1257B30d182BcEd1a333FEe8" "0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9" --verify --etherscan-api-key ${POLYSCAN_API_KEY}
+forge create src/v2-periphery/UniswapV2Router02.sol:UniswapV2Router02 --rpc-url zkEVMPolygonTestnet --private-key 'ae839931542e367be1723ff40d18a6111c23bfe9c9320e1bb54a3a9217b6afd1' --constructor-args "0x76a6bb34701516Ec1257B30d182BcEd1a333FEe8" "0x23Be4c7d1040Ff407F5e1d020D8Ee4ed0abBF729" --verify --etherscan-api-key ${POLYSCAN_API_KEY}
+
+forge create src/erc-20-tokens/USDT.sol:USDT --rpc-url zkEVMPolygonTestnet --private-key 'ae839931542e367be1723ff40d18a6111c23bfe9c9320e1bb54a3a9217b6afd1' --constructor-args "0xc0cb694bE0f90a9167e1ff8f2C3FcABdF745EFf9" --verify --etherscan-api-key ${POLYSCAN_API_KEY}
+
+forge create src/erc-20-tokens/WETH.sol:WETH9 --rpc-url zkEVMPolygonTestnet --private-key 'ae839931542e367be1723ff40d18a6111c23bfe9c9320e1bb54a3a9217b6afd1' --verify --etherscan-api-key ${POLYSCAN_API_KEY}
 
 https://book.getfoundry.sh/
 

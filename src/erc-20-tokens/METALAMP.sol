@@ -5,11 +5,11 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-contract USDT is ERC20, Ownable, ERC20Permit {
+contract METALAMP is ERC20, Ownable, ERC20Permit {
     constructor(address initialOwner)
-        ERC20("USDT", "USDT")
+        ERC20("METALAMP", "META")
         Ownable(initialOwner)
-        ERC20Permit("USDT")
+        ERC20Permit("META")
     {
         _mint(msg.sender, 10000000 * 10 ** decimals());
     }
