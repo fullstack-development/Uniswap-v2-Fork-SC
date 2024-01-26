@@ -79,6 +79,11 @@ Now we are ready to run deploy with this command:
 ```bash
 forge create src/v2-periphery/UniswapV2Router02.sol:UniswapV2Router02 --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --constructor-args "factoryAddressPutHere" "WETHAddressPutHere" --verify --etherscan-api-key ${POLYSCAN_API_KEY}
 ```
+To be able to make batch requests to smart contracts as frontend, you will need to deploy [Multicall](src\Multicall.sol) contract:
+
+```bash
+forge create src/Multicall.sol:Multicall --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --verify --etherscan-api-key ${POLYSCAN_API_KEY}
+```
 
 _if you want to deploy erc-20 tokens to test your protocol, you can use this code below. It will deploy all erc-20 tokens in erc-20-tokens folder and mint those tokens to your account._
 
