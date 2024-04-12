@@ -15,5 +15,5 @@ zkEVMPolygonMainnet = "${POLYGON_MAINNET_RPC_URL}"
 zkEVMPolygonTestnet = "${POLYGON_TESTNET_RPC_URL}"
 
 [etherscan]
-etherscan = {key = "${POLYSCAN_API_KEY}"}
+etherscan = {key = "${POLYSCAN_API_KEY}", chain = 2442}
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

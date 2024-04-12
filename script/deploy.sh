@@ -40,5 +40,7 @@ for TOKEN in "${TOKENS[@]}"; do
   CONTRACT_NAME=$(echo "$TOKEN" | cut -d ':' -f 2)
   CONTRACT_PATH=$(echo "$TOKEN" | cut -d ':' -f 1)
   echo "Deploying contract: $CONTRACT_NAME (Path: $CONTRACT_PATH)"
-  forge create ${TOKEN} --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --constructor-args "${ADDRESS}" --verify --etherscan-api-key ${POLYSCAN_API_KEY}
+  forge create ${TOKEN} --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --constructor-args "${ADDRESS}" --legacy
 done
+
+# forge create src/erc-20-tokens/SHIB.sol:SHIB --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --constructor-args 0xc0cb694bE0f90a9167e1ff8f2C3FcABdF745EFf9 --verify --etherscan-api-key ${POLYSCAN_API_KEY}

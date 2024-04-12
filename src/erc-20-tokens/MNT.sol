@@ -5,11 +5,11 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-contract Maker is ERC20, Ownable, ERC20Permit {
+contract MNT is ERC20, Ownable, ERC20Permit {
     constructor(address initialOwner)
-        ERC20("Maker", "MKR")
+        ERC20("Mantle", "MNT")
         Ownable(initialOwner)
-        ERC20Permit("MKR")
+        ERC20Permit("ARB")
     {
         _mint(msg.sender, 10000000 * 10 ** decimals());
     }

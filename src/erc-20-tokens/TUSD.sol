@@ -14,7 +14,7 @@ contract TUSD is ERC20, Ownable, ERC20Permit {
         _mint(msg.sender, 10000000 * 10 ** decimals());
     }
 
-    function mint(address to, uint256 amount) public onlyOwner {
+    function mint(address to, uint256 amount) public {
         _mint(to, amount);
     }
 }

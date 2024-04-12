@@ -44,7 +44,7 @@ To deploy uniswapV2 Factory, you will need to pass ```_FEETOSETTER``` address ri
 
 ```bash
 source .env
-forge create src/v2-core/UniswapV2Factory.sol:UniswapV2Factory --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --constructor-args "putFeeToSetterAddressHere" --verify --etherscan-api-key ${POLYSCAN_API_KEY}
+forge create src/v2-core/UniswapV2Factory.sol:UniswapV2Factory --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --constructor-args "putFeeToSetterAddressHere" --legacy
 ```
 if you are windows user, you might have error - "Failed to create wallet from private key. Private key is invalid hex: Odd number of digits"
 
@@ -52,11 +52,18 @@ To resolve this problem, you need to remove the ```\r``` symbol from private key
 
 Save the address of Fabric contract.
 
-Now put this address into the code below, instead of ```fabricAddress``` variable. This call will let us to get initial code hash of the Pair contract. Save it, we will need it later.
+Now, to get initial code hash of the Pair contract, we need to install ethers library and run computation script.
 
- ```cast call fabricAddress "INIT_CODE_HASH()(bytes32)" --rpc-url https://rpc.public.zkevm-test.net``` to get initial code hash of the Pair contract.
+```bash
+npm install --save ethers and node ./script/compute.js
+```
 
-2) Deploy uniswapV2 Router
+```bash
+node ./script/compute.js
+```
+Save this initial code hash 
+
+1) Deploy uniswapV2 Router
 
 We need to put our initial code hash of the Pair contract to the library called UniswapV2Library.sol
 
@@ -72,19 +79,19 @@ As the second argument for zkEVM polygon mainnet we can use [WETH](https://zkevm
 If we want to deploy to testnet, we can use this command to deploy our WETH contract.
 
 ```bash
-forge create src/erc-20-tokens/WETH.sol:WETH9 --rpc-url zkEVMPolygonTestnet --private-key 'ae839931542e367be1723ff40d18a6111c23bfe9c9320e1bb54a3a9217b6afd1' --verify --etherscan-api-key ${POLYSCAN_API_KEY}
+forge create src/erc-20-tokens/WETH.sol:WETH9 --rpc-url zkEVMPolygonTestnet --private-key 'ae839931542e367be1723ff40d18a6111c23bfe9c9320e1bb54a3a9217b6afd1' --legacy
 ```
+
 Now we are ready to run deploy with this command:
 
 ```bash
-forge create src/v2-periphery/UniswapV2Router02.sol:UniswapV2Router02 --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --constructor-args "factoryAddressPutHere" "WETHAddressPutHere" --verify --etherscan-api-key ${POLYSCAN_API_KEY}
+forge create src/v2-periphery/UniswapV2Router02.sol:UniswapV2Router02 --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --constructor-args "factoryAddressPutHere" "WETHAddressPutHere" --legacy
 ```
 To be able to make batch requests to smart contracts as frontend, you will need to deploy [Multicall](src\Multicall.sol) contract:
 
 ```bash
-forge create src/Multicall.sol:Multicall --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --verify --etherscan-api-key ${POLYSCAN_API_KEY}
+forge create src/Multicall.sol:Multicall --rpc-url zkEVMPolygonTestnet --private-key ${PRIVATE_KEY} --legacy
 ```
-
 _if you want to deploy erc-20 tokens to test your protocol, you can use this code below. It will deploy all erc-20 tokens in erc-20-tokens folder and mint those tokens to your account._
 
 ```bash
