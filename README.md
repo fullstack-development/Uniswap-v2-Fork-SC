@@ -79,7 +79,7 @@ As the second argument for zkEVM polygon mainnet we can use [WETH](https://zkevm
 If we want to deploy to testnet, we can use this command to deploy our WETH contract.
 
 ```bash
-forge create src/erc-20-tokens/WETH.sol:WETH9 --rpc-url zkEVMPolygonTestnet --private-key 'ae839931542e367be1723ff40d18a6111c23bfe9c9320e1bb54a3a9217b6afd1' --legacy
+forge create src/erc-20-tokens/WETH.sol:WETH9 --rpc-url zkEVMPolygonTestnet --private-key 'privateKey' --legacy
 ```
 
 Now we are ready to run deploy with this command:
@@ -102,3 +102,5 @@ chmod +x ./script/deploy.sh
 source .env
 ./script/deploy.sh putYourWalletAddressHere
 ```
+
+deployed addresses [here](./DeployAddresses.txt)
